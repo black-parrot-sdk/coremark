@@ -43,7 +43,7 @@ Original Author: Shay Gal-on
 */
 CORETIMETYPE barebones_clock() {
 //	#error "You must implement a method to measure time in barebones_clock()! This function should return current time.\n"
-	//based off of bsg_manycore implimentation since we need a timer	
+	//based off of bsg_manycore implementation since we need a timer	
         static CORETIMETYPE fake_timer=0;
         fake_timer += 100;
         return fake_timer;

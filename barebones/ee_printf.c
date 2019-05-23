@@ -561,7 +561,7 @@ repeat:
 }
 
 void uart_send_char(char c) {
-#error "You must implement the method uart_send_char to use this file!\n";
+//#error "You must implement the method uart_send_char to use this file!\n";
 /*	Output of a char to a UART usually follows the following model:
 	Wait until UART is ready
 	Write char to UART
@@ -574,6 +574,9 @@ void uart_send_char(char c) {
 	
 	Check the UART sample code on your platform or the board documentation.
 */
+
+
+// ADD OUR PRINT OUT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 }
 
 int ee_printf(const char *fmt, ...)

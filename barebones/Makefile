@@ -1,6 +1,6 @@
 #Coremark makefile for BP
 
-RISCV_GCC = riscv64-unknown-elf-gcc -mabi=lp64 -march=rv64ia -mcmodel=medany -fno-builtin-printf
+RISCV_GCC = $(CROSS_COMPILE)gcc -mabi=lp64 -march=rv64ia -mcmodel=medany -fno-builtin-printf
 
 RISCV_LINK = -O0 -static -nostdlib -nostartfiles -lm -lgcc -T test.ld -L../
 
@@ -8,8 +8,6 @@ RISCV_TESTS_DIR = ../../riscv-tests/benchmarks
 
 COMMON_FILES = -I$(RISCV_TESTS_DIR)/../env -I$(RISCV_TESTS_DIR)/common -I../ -I./
 COMMON_FILES += $(RISCV_TESTS_DIR)/common/crt.S $(RISCV_TESTS_DIR)/common/syscalls.c
-
-RISCV_OBJDUMP  = riscv64-unknown-elf-objdump -D -M no-aliases,numeric
 
 #Number of iterations coremark runs for
 ITER_NUM = 2
@@ -21,7 +19,6 @@ BP_HAS_FLOAT = 0
 riscv:
 	$(RISCV_GCC) $(COMMON_FILES) -o coremark.riscv $(wildcard *.c) $(wildcard ../*.c) -DITERATIONS=$(ITER_NUM) \
 	-DHAS_FLOAT=$(BP_HAS_FLOAT) $(RISCV_LINK)
-	$(RISCV_OBJDUMP) coremark.riscv > coremark.dump
 
 clean:
 	rm -f *.riscv

@@ -1,6 +1,6 @@
 #Coremark makefile for BP
 
-RISCV_GCC = $(CROSS_COMPILE)gcc -mabi=lp64 -march=rv64ia -mcmodel=medany -fno-builtin-printf
+RISCV_GCC = $(CROSS_COMPILE)gcc -mabi=lp64 -march=rv64ima -mcmodel=medany -fno-builtin-printf
 
 RISCV_LINK = -O0 -static -nostdlib -nostartfiles -lm -lgcc -T test.ld -L../
 

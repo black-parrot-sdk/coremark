@@ -2,7 +2,8 @@
 
 RISCV_GCC = $(CROSS_COMPILE)gcc -mabi=lp64 -march=rv64ima -mcmodel=medany -fno-builtin-printf
 
-RISCV_LINK = -O0 -static -nostdlib -nostartfiles -lm -lgcc -T test.ld -L../
+RISCV_GCC += -O2 -fno-common -funroll-loops -finline-functions --param max-inline-insns-auto=20 -falign-functions=4 -falign-jumps=4 -falign-loops=4
+RISCV_LINK = -static -nostdlib -nostartfiles -lm -lgcc -T test.ld -L../
 
 RISCV_TESTS_DIR = ../../riscv-tests/benchmarks
 
@@ -10,7 +11,7 @@ COMMON_FILES = -I$(RISCV_TESTS_DIR)/../env -I$(RISCV_TESTS_DIR)/common -I../ -I.
 COMMON_FILES += $(RISCV_TESTS_DIR)/common/crt.S $(RISCV_TESTS_DIR)/common/syscalls.c
 
 #Number of iterations coremark runs for
-ITER_NUM = 2
+ITER_NUM = 5
 #indicates whether or not BP has float support
 BP_HAS_FLOAT = 0
 

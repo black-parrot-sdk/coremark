@@ -21,5 +21,9 @@ riscv:
 	$(RISCV_GCC) $(COMMON_FILES) -o coremark.riscv $(wildcard *.c) $(wildcard ../*.c) -DITERATIONS=$(ITER_NUM) \
 	-DHAS_FLOAT=$(BP_HAS_FLOAT) $(RISCV_LINK)
 
+coremark.s:
+	$(RISCV_GCC) $(COMMON_FILES) -dp -S $(wildcard *.c) $(wildcard ../*.c) -DITERATIONS=$(ITER_NUM) \
+	-DHAS_FLOAT=$(BP_HAS_FLOAT) $(RISCV_LINK)
+
 clean:
 	rm -f *.riscv

@@ -2,6 +2,7 @@
 
 RISCV_GCC = $(CROSS_COMPILE)gcc -mabi=lp64 -march=rv64ima -mcmodel=medany -fno-builtin-printf
 
+RISCV_GCC += -mtune=bsg_blackparrot
 RISCV_GCC += -O2 -fno-common -funroll-loops -finline-functions --param max-inline-insns-auto=20 -falign-functions=4 -falign-jumps=4 -falign-loops=4
 RISCV_LINK = -static -nostdlib -nostartfiles -lm -lgcc -T test.ld -L../
 

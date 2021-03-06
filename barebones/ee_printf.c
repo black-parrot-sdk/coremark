@@ -17,6 +17,8 @@ limitations under the License.
 #include <coremark.h>
 #include <stdarg.h>
 
+#include "bp_utils.h"
+
 #define ZEROPAD  	(1<<0)	/* Pad with zero */
 #define SIGN    	(1<<1)	/* Unsigned/signed long */
 #define PLUS    	(1<<2)	/* Show plus */
@@ -561,22 +563,7 @@ repeat:
 }
 
 void uart_send_char(char c) {
-//#error "You must implement the method uart_send_char to use this file!\n";
-/*	Output of a char to a UART usually follows the following model:
-	Wait until UART is ready
-	Write char to UART
-	Wait until UART is done
-	
-	Or in code:
-	while (*UART_CONTROL_ADDRESS != UART_READY);
-	*UART_DATA_ADDRESS = c;
-	while (*UART_CONTROL_ADDRESS != UART_READY);
-	
-	Check the UART sample code on your platform or the board documentation.
-*/
-
-
-// ADD OUR PRINT OUT HERE!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+  bp_cprint(c);
 }
 
 int ee_printf(const char *fmt, ...)

@@ -4,7 +4,7 @@ RISCV_GCC_OPTS  = -mabi=lp64 -march=rv64imafd -mcmodel=medany -I../ -I./ -I$(BP_
 RISCV_GCC_OPTS += -funswitch-loops -flto
 RISCV_GCC_OPTS += -mtune=bsg_blackparrot
 RISCV_GCC_OPTS += -O2 -fno-common -funroll-loops -finline-functions --param max-inline-insns-auto=20 -falign-functions=4 -falign-jumps=4 -falign-loops=4
-RISCV_LINK_OPTS = -T $(BP_LINKER_DIR)/riscv.ld -L$(BP_LIB_DIR) -static -nostartfiles -lperch
+RISCV_LINK_OPTS = -T $(BP_LINKER_DIR)/riscv.ld -L$(BP_LIB_DIR) -Wl,--whole-archive -lperch -Wl,--no-whole-archive
 
 #Number of iterations coremark runs for
 ITER_NUM = 5
